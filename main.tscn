@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwwve66goag7d"]
+[gd_scene load_steps=10 format=3 uid="uid://cwwve66goag7d"]
 
 [ext_resource type="Script" uid="uid://cn7sqe64ydkuo" path="res://ui.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://8v37n6a0oh4d" path="res://guy1.png" id="2_0xm2m"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dkkb822tow132" path="res://guy1 (2).png" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://852d06w6s0qf" path="res://guy1 (3).png" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://dl7fetryvxtre" path="res://Screenshot 2026-04-22 at 5.22.18 PM.png" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://c762hsqijsdhq" path="res://sunsetGuy.jpg" id="7_5vw27"]
+[ext_resource type="AudioStream" uid="uid://ct00mc6wyteud" path="res://fahhh_KcgAXfs.mp3" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://caowfaipalro0" path="res://bakamitai.mp3" id="8_5vw27"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -70,6 +73,23 @@ grow_vertical = 2
 texture = ExtResource("6_7mycd")
 expand_mode = 1
 
+[node name="TextureRect6" type="TextureRect" parent="UI/Img"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_5vw27")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI/Img"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="TextBox" type="ColorRect" parent="UI"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -103,6 +123,21 @@ theme_override_font_sizes/font_size = 32
 text = "ガイ１"
 vertical_alignment = 1
 
+[node name="LineEdit" type="LineEdit" parent="UI/TextBox"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -164.0
+offset_top = -31.0
+offset_right = 164.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "(Write name here)"
+alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -135,5 +170,17 @@ offset_right = 897.0
 offset_bottom = 118.0
 text = "2"
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="FahhhKcgAXfs" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_272bh")
+
+[node name="Bakamitai" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_5vw27")
+volume_db = -55.064
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+
+[connection signal="text_submitted" from="UI/TextBox/LineEdit" to="UI" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="UI/Buttons/1" to="UI" method="_B1"]
 [connection signal="pressed" from="UI/Buttons/2" to="UI" method="_B2"]
